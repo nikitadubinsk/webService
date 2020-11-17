@@ -1,0 +1,5 @@
+.one-contact {
+  display: grid;
+  grid-template-columns: 5% 20% 15% 20% 10% 15% 15%;
+  grid-template-rows: 1fr;
+}

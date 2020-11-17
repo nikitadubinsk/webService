@@ -1,0 +1,11 @@
+<section>
+  <h1>Регистрация</h1>
+  <div class="alert" *ngIf="error$ | async as error">{{error}}</div>
+  <form [formGroup]="form" (ngSubmit)="registration">
+    <p>Адрес электронной почты</p>
+    <input name="email" type="text" placeholder="Адрес электронной почты" formControlName="login">
+    <p>Пароль</p>
+    <input name="password" type="password" formControlName="password">
+    <button type="submit" (click)="registration()" [disabled]="form.invalid">Зарегистрироваться</button>
+  </form>
+</section>

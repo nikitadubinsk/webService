@@ -1,0 +1,12 @@
+<section>
+  <h1>Авторизация</h1>
+  <div class="alert" *ngIf="error$ | async as error">{{error}}</div>
+  <form [formGroup]="form" (ngSubmit)="authorization">
+    <p>Адрес электронной почты</p>
+    <input name="email" type="text" placeholder="Адрес электронной почты" formControlName="login">
+    <p>Пароль</p>
+    <input name="password" type="password" formControlName="password">
+    <button type="submit" (click)="authorization()" [disabled]="form.invalid">Авторизоваться</button>
+    <a [routerLink]="['/registration']">Еще нет аккаунта? Зарегестрируйся!</a>
+  </form>
+</section>

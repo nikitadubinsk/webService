@@ -1,0 +1,25 @@
+<h1>Список контактов</h1>
+
+<div *ngFor="let contact of contacts let i = index" class="one-contact">
+  <p>{{i+1}}</p>
+  <p>{{contact.name}}</p>
+  <p>{{contact.telephone}}</p>
+  <p>{{contact.email}}</p>
+  <p>{{contact.createdAt | date: 'HH:mm dd.MM.yy'}}</p>
+  <button (click)="edit(contact)">Редактировать</button>
+  <button (click)="delete(contact.id)">Удалить</button>
+</div>
+
+<h2 *ngIf="isCreateContact">Добавить новый контакт</h2>
+<h2 *ngIf="isEditContact">Редактировать контакт</h2>
+<form [formGroup]="form" (ngSubmit)="submit">
+  <input type="hidden" formControlName="user_id">
+  <input type="hidden" formControlName="id" *ngIf="isEditContact">
+  <p>Имя</p>
+  <input type="text" name="name" placeholder="Имя контакта" formControlName="name">
+  <p>Номер телефона</p>
+  <input type="text" name="telephone" placeholder="Номер телефона" formControlName="telephone">
+  <p>Адрес электронной почты</p>
+  <input type="text" name="email" placeholder="Адрес электронной почты" formControlName="email">
+  <button type="submit" (click)="submit()" [disabled]="form.invalid">Сохранить контакт</button>
+</form>
